@@ -1,7 +1,59 @@
+import 'package:contacts/MyAppState.dart';
+import 'package:contacts/screens/add_new_contact.dart';
+import 'package:contacts/widgets/contscts_list.dart';
+import 'package:contacts/widgets/no_contacts_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyContactApp());
+}
+
+class MyContactApp extends StatelessWidget {
+  const MyContactApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => MyAppState(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Contacts App',
+        /*theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        ),*/
+        home: const ContactHome(),
+      ),
+    );
+  }
+}
+
+class ContactHome extends StatelessWidget {
+  const ContactHome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    return Scaffold(
+      appBar:  AppBar(title: const Text("Contacts App"),),
+      body: appState.contacts.isEmpty
+          ? const NoContactsWidget()
+          : const ContactsList(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return AddNewContact();
+            }),
+          );
+        },
+        tooltip: 'Add New Contact',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
