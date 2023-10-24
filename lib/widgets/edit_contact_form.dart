@@ -5,16 +5,18 @@ import 'package:contacts/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddContactForm extends StatefulWidget {
-  const AddContactForm({
-    Key? key,
+class EditContactForm extends StatefulWidget {
+  const EditContactForm({
+    Key? key, required this.contact,
   }) : super(key: key);
 
+  final Contact contact;
+
   @override
-  State<AddContactForm> createState() => _AddContactFormState();
+  State<EditContactForm> createState() => _EditContactFormState();
 }
 
-class _AddContactFormState extends State<AddContactForm> {
+class _EditContactFormState extends State<EditContactForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
@@ -35,7 +37,10 @@ class _AddContactFormState extends State<AddContactForm> {
             onSaved: (value) {
               firstName = value;
             },
+
             hint: 'First Name',
+            initialValue: widget.contact.firstName,
+
           ),
           const SizedBox(
             height: 16,
@@ -45,6 +50,7 @@ class _AddContactFormState extends State<AddContactForm> {
               lastName = value;
             },
             hint: 'Last Name',
+            initialValue: widget.contact.lastName,
           ),
           const SizedBox(
             height: 16,
@@ -55,6 +61,8 @@ class _AddContactFormState extends State<AddContactForm> {
               mobile = value;
             },
             hint: 'Mobile',
+            initialValue: widget.contact.mobile,
+
           ),
           const SizedBox(
             height: 32,
@@ -64,6 +72,8 @@ class _AddContactFormState extends State<AddContactForm> {
               email = value;
             },
             hint: 'Email',
+            initialValue: widget.contact.email,
+
           ),
           const SizedBox(
             height: 32,

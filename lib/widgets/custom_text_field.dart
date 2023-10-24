@@ -8,10 +8,12 @@ class CustomTextField extends StatelessWidget {
       required this.hint,
       this.maxLines = 1,
       this.onSaved,
-      this.onChanged});
+      this.onChanged,  this.initialValue=""});
 
   final String hint;
   final int maxLines;
+
+  final String initialValue;
 
   final void Function(String?)? onSaved;
 
@@ -28,6 +30,7 @@ class CustomTextField extends StatelessWidget {
           return null;
         }
       },
+      initialValue:initialValue ,
       cursorColor: kPrimaryColor,
       maxLines: maxLines,
       decoration: InputDecoration(
@@ -45,7 +48,7 @@ class CustomTextField extends StatelessWidget {
           8,
         ),
         borderSide: BorderSide(
-          color: color ?? Colors.white,
+          color: color ?? kPrimaryColor,
         ));
   }
 }

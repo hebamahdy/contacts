@@ -30,11 +30,11 @@ class CustomButton extends StatelessWidget {
                   ),
                 )
               : const Text(
-                  'Add',
+                  'Add Contact',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    color: Colors.white,
+                    //fontWeight: FontWeight.bold,
+                    //fontSize: 20,
                   ),
                 ),
         ),

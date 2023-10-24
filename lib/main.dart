@@ -16,14 +16,16 @@ class MyContactApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
-      child: MaterialApp(
+      child: const  MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Contacts App',
         /*theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        ),*/
-        home: const ContactHome(),
+
+        )*/
+
+        home:  ContactHome(),
       ),
     );
   }
@@ -45,7 +47,7 @@ class ContactHome extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
-              return AddNewContact();
+              return const AddNewContact();
             }),
           );
         },

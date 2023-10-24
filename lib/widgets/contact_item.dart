@@ -14,45 +14,48 @@ class ContactItem extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            color:kPrimaryColor,
-            borderRadius:BorderRadius.circular(16)
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color:kPrimaryColor,
+              borderRadius:BorderRadius.circular(24)
 
+            ),
+            child: Center(child: Text(contact.firstName[0].toUpperCase(),style: TextStyle(color: Colors.white),),),
           ),
-          child: Center(child: Text(contact.firstName[0].toUpperCase(),style: TextStyle(color: Colors.white),),),
-        ),
-        Column(children: [
-          Text(contact.firstName,style: TextStyle(fontWeight: FontWeight.bold),),
-          Text(contact.mobile)
-        ],),
-        IconButton(
-          onPressed: () {
+          Column(children: [
+            Text(contact.firstName,style: TextStyle(fontWeight: FontWeight.bold),),
+            Text(contact.mobile)
+          ],),
+          IconButton(
+            onPressed: () {
 
-          },
-          icon: const Icon(
-            Icons.mode_edit,
-            color: Colors.black,
-            size: 30,
+            },
+            icon: const Icon(
+              Icons.mode_edit,
+              color: Colors.black,
+              size: 30,
+            ),
           ),
-        ),
-        IconButton(
-         onPressed: (){
-           appState.deleteContact(index);
-         },
-          icon: const Icon(
-            Icons.delete,
-            color: Colors.black,
-            size: 30,
-          ),
-        )
-      ],
+          IconButton(
+           onPressed: (){
+             appState.deleteContact(index);
+           },
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.black,
+              size: 30,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
