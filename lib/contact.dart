@@ -5,5 +5,8 @@ class Contact
   String mobile;
   String email;
 
-  Contact(this.firstName, this.lastName, this.mobile, this.email);
+   String image="";
+
+
+  Contact(this.firstName, this.lastName, this.mobile, this.email,this.image);
 }

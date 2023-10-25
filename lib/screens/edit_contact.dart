@@ -15,15 +15,17 @@ class EditContact extends StatelessWidget {
 
     return  Scaffold(
 
-      body:  SingleChildScrollView(
+      body:  SafeArea(
+        child: SingleChildScrollView(
 
-        child: Column(
-          children: [
-            const CustomAppBar(title: "Edit Contact"),
-            Padding(
-                padding: const EdgeInsets.all(24),
-                child: EditContactForm(index: index)),
-          ],
+          child: Column(
+            children: [
+              const CustomAppBar(title: "Edit Contact"),
+              Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: EditContactForm(index: index)),
+            ],
+          ),
         ),
       ),
     );

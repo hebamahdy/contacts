@@ -74,7 +74,7 @@ class _AddContactFormState extends State<AddContactForm> {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
 
-                appState.addNewContact(Contact(firstName!, lastName!, mobile!, email!));
+                appState.addNewContact(Contact(firstName!, lastName!, mobile!, email!,appState.getImage()));
                 Navigator.pop(context);
 
               } else {

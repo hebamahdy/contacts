@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:contacts/MyAppState.dart';
 import 'package:contacts/constants.dart';
 import 'package:contacts/contact.dart';
@@ -21,6 +23,7 @@ class ContactItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
         children: [
+          contact.image==""?
           Container(
             width: 50,
             height: 50,
@@ -30,7 +33,17 @@ class ContactItem extends StatelessWidget {
 
             ),
             child: Center(child: Text(contact.firstName[0].toUpperCase(),style: TextStyle(color: Colors.white),),),
+          ):
+
+          SizedBox(
+            width: 50,
+            height: 50,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(60),
+              child: Image.file(File(contact.image),fit: BoxFit.cover,),
+            ),
           ),
+
           Column(children: [
             Text(contact.firstName,style: TextStyle(fontWeight: FontWeight.bold),),
             Text(contact.mobile)

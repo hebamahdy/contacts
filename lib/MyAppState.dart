@@ -5,13 +5,17 @@ class MyAppState extends ChangeNotifier  {
   final List<Contact> _contacts = [];
 
 
+    String _imagePath="";
+
 
   List<Contact> get contacts => _contacts;
 
 
   addNewContact(Contact contact)
   {
+
     contacts.add(contact);
+    _imagePath="";
     notifyListeners();
   }
 
@@ -29,9 +33,19 @@ class MyAppState extends ChangeNotifier  {
     contacts[index].mobile=contact.mobile;
 
     contacts[index].email=contact.email;
-
+    contacts[index].image=_imagePath;
+    _imagePath="";
     notifyListeners();
 
   }
 
+  setImage(String imagePath)
+  {
+    _imagePath=imagePath;
+    notifyListeners();
+  }
+ String getImage()
+  {
+    return _imagePath;
+  }
 }

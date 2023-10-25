@@ -9,15 +9,17 @@ class AboutUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const Scaffold(
 
-      body:  SingleChildScrollView(
+      body:  SafeArea(
+        child: SingleChildScrollView(
 
-        child: Column(
-          children: [
-            CustomAppBar(title: "About Us"),
-            Padding(
-                padding:  EdgeInsets.all(24),
-                child: Text(aboutUs,style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold),)),
-          ],
+          child: Column(
+            children: [
+              CustomAppBar(title: "About Us"),
+              Padding(
+                  padding:  EdgeInsets.all(24),
+                  child: Text(aboutUs,style: TextStyle(color: kPrimaryColor,fontWeight: FontWeight.bold),)),
+            ],
+          ),
         ),
       ),
     );

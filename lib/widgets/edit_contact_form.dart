@@ -86,7 +86,7 @@ class _EditContactFormState extends State<EditContactForm> {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
 
-                appState.editNewContact(widget.index,Contact(firstName!, lastName!, mobile!, email!));
+                appState.editNewContact(widget.index,Contact(firstName!, lastName!, mobile!, email!,appState.getImage()));
                 Navigator.pop(context);
 
               } else {
