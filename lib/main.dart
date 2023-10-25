@@ -1,6 +1,8 @@
 import 'package:contacts/MyAppState.dart';
+import 'package:contacts/constants.dart';
 import 'package:contacts/screens/add_new_contact.dart';
 import 'package:contacts/widgets/contscts_list.dart';
+import 'package:contacts/widgets/drawer_widget.dart';
 import 'package:contacts/widgets/no_contacts_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -38,11 +40,17 @@ class ContactHome extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
     return Scaffold(
-      appBar:  AppBar(title: const Text("Contacts App"),),
+      appBar:  AppBar(title: const Text("Contacts App"),
+      backgroundColor: kPrimaryColor,
+      ),
+      drawer:const Drawer(
+        child: DrawerWidget(),
+      ),
       body: appState.contacts.isEmpty
           ? const NoContactsWidget()
           : const ContactsList(),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: kPrimaryColor,
         onPressed: (){
           Navigator.push(
             context,

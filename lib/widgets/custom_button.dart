@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../../constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onTap, this.isLoading = false});
+  const CustomButton({super.key, this.onTap, this.isLoading = false, required this.text});
 
   final void Function()? onTap;
+
+  final String text;
 
   final bool isLoading;
   @override
@@ -29,9 +31,9 @@ class CustomButton extends StatelessWidget {
                     color: Colors.black,
                   ),
                 )
-              : const Text(
-                  'Add Contact',
-                  style: TextStyle(
+              :  Text(
+                  text,
+                  style:const TextStyle(
                     color: Colors.white,
                     //fontWeight: FontWeight.bold,
                     //fontSize: 20,

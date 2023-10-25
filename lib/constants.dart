@@ -9,3 +9,5 @@ List<Color> kColors = const [
   Color(0xff537D8D),
   Color(0xff482C3D),
 ];
+
+const String aboutUs=" Contacts App  To App,Edit and Delete Your Contact ";

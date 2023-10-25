@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 
 class EditContactForm extends StatefulWidget {
   const EditContactForm({
-    Key? key, required this.contact,
+    Key? key, required this.index,
   }) : super(key: key);
 
-  final Contact contact;
+  final int index;
 
   @override
   State<EditContactForm> createState() => _EditContactFormState();
@@ -22,9 +22,11 @@ class _EditContactFormState extends State<EditContactForm> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   String? firstName, lastName,mobile,email;
+
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
+    Contact contact=appState.contacts[widget.index];
     return Form(
       key: formKey,
       autovalidateMode: autovalidateMode,
@@ -39,7 +41,7 @@ class _EditContactFormState extends State<EditContactForm> {
             },
 
             hint: 'First Name',
-            initialValue: widget.contact.firstName,
+            initialValue: contact.firstName,
 
           ),
           const SizedBox(
@@ -50,7 +52,7 @@ class _EditContactFormState extends State<EditContactForm> {
               lastName = value;
             },
             hint: 'Last Name',
-            initialValue: widget.contact.lastName,
+            initialValue: contact.lastName,
           ),
           const SizedBox(
             height: 16,
@@ -61,7 +63,7 @@ class _EditContactFormState extends State<EditContactForm> {
               mobile = value;
             },
             hint: 'Mobile',
-            initialValue: widget.contact.mobile,
+            initialValue: contact.mobile,
 
           ),
           const SizedBox(
@@ -72,18 +74,19 @@ class _EditContactFormState extends State<EditContactForm> {
               email = value;
             },
             hint: 'Email',
-            initialValue: widget.contact.email,
+            initialValue: contact.email,
 
           ),
           const SizedBox(
             height: 32,
           ),
           CustomButton(
+            text: 'Edit Contact',
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
 
-                appState.addNewContact(Contact(firstName!, lastName!, mobile!, email!));
+                appState.editNewContact(widget.index,Contact(firstName!, lastName!, mobile!, email!));
                 Navigator.pop(context);
 
               } else {

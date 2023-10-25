@@ -1,6 +1,7 @@
 import 'package:contacts/MyAppState.dart';
 import 'package:contacts/constants.dart';
 import 'package:contacts/contact.dart';
+import 'package:contacts/screens/edit_contact.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +37,13 @@ class ContactItem extends StatelessWidget {
           ],),
           IconButton(
             onPressed: () {
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return  EditContact(index: index);
+                }),
+              );
 
             },
             icon: const Icon(

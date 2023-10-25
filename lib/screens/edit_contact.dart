@@ -1,26 +1,28 @@
-import 'package:contacts/constants.dart';
-import 'package:contacts/widgets/add_contact_form.dart';
+
 import 'package:contacts/widgets/custom_app_bar.dart';
+import 'package:contacts/widgets/edit_contact_form.dart';
 import 'package:flutter/material.dart';
 
 class EditContact extends StatelessWidget {
-  const EditContact({super.key});
+  const EditContact({super.key, required this.index});
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
 
 
 
-    return const Scaffold(
+    return  Scaffold(
 
       body:  SingleChildScrollView(
 
         child: Column(
           children: [
-            CustomAppBar(title: "Add New Contact"),
+            const CustomAppBar(title: "Edit Contact"),
             Padding(
-                padding: EdgeInsets.all(24),
-                child: AddContactForm()),
+                padding: const EdgeInsets.all(24),
+                child: EditContactForm(index: index)),
           ],
         ),
       ),

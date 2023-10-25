@@ -69,6 +69,7 @@ class _AddContactFormState extends State<AddContactForm> {
             height: 32,
           ),
           CustomButton(
+            text: 'Add Contact',
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();

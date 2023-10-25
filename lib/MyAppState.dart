@@ -21,4 +21,17 @@ class MyAppState extends ChangeNotifier  {
     notifyListeners();
   }
 
+  editNewContact(int index,Contact contact)
+  {
+    contacts[index].firstName=contact.firstName;
+    contacts[index].lastName=contact.lastName;
+
+    contacts[index].mobile=contact.mobile;
+
+    contacts[index].email=contact.email;
+
+    notifyListeners();
+
+  }
+
 }
