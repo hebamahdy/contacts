@@ -61,7 +61,7 @@ class ContactItem extends StatelessWidget {
             },
             icon: const Icon(
               Icons.mode_edit,
-              color: Colors.black,
+              color: kPrimaryColor,
               size: 30,
             ),
           ),
@@ -71,7 +71,7 @@ class ContactItem extends StatelessWidget {
            },
             icon: const Icon(
               Icons.delete,
-              color: Colors.black,
+              color: kPrimaryColor,
               size: 30,
             ),
           )

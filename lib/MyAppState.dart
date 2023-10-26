@@ -33,8 +33,7 @@ class MyAppState extends ChangeNotifier  {
     contacts[index].mobile=contact.mobile;
 
     contacts[index].email=contact.email;
-    contacts[index].image=_imagePath;
-    _imagePath="";
+    contacts[index].image=contact.image;
     notifyListeners();
 
   }

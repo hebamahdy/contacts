@@ -31,7 +31,7 @@ class DrawerWidget extends StatelessWidget {
           ],
         ),
          ListTile(title: const Text("Home"),
-          leading: const Icon(Icons.home),
+          leading: const Icon(Icons.home,size: 30,color: kPrimaryColor,),
           onTap: (){
             Navigator.push(
               context,
@@ -42,7 +42,7 @@ class DrawerWidget extends StatelessWidget {
           },
         ),
         ListTile(title: const Text("Add Contact"),
-          leading: const Icon(Icons.add_circle_outline_outlined),
+          leading: const Icon(Icons.add_circle_outline_outlined,size: 30,color: kPrimaryColor,),
           onTap: (){
             Navigator.push(
               context,
@@ -53,7 +53,7 @@ class DrawerWidget extends StatelessWidget {
           },
         ),
         ListTile(title: const Text("About Us"),
-          leading: const Icon(Icons.info_outlined),
+          leading: const Icon(Icons.info_outlined,size: 30,color: kPrimaryColor,),
           onTap: (){
             Navigator.push(
               context,

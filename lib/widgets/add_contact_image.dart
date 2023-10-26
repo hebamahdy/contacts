@@ -56,11 +56,10 @@ class _AddContactImageState extends State<AddContactImage> {
        await getImage();
 
       },
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-
+          file==null?
           Container(
             width: 100,
             height: 100,
@@ -74,19 +73,18 @@ class _AddContactImageState extends State<AddContactImage> {
                   color: Colors.white,
               size: 30,
             ),),
-          ),
-          if(file!=null)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10,0,0,0),
-              child: SizedBox(
-                width: 100,
-                height: 100,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: Image.file(file!,fit: BoxFit.cover,),
-                ),
+          ):
+
+            SizedBox(
+              width: 100,
+              height: 100,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(60),
+                child: Image.file(file!,fit: BoxFit.cover,),
               ),
-            )
+            ),
+         const SizedBox(height: 10,),
+         file==null?const Text("Add Contact Image",style: TextStyle(color: kPrimaryColor),):const Text("Edit Contact Image",style: TextStyle(color: kPrimaryColor),)
         ],
       ),
     )

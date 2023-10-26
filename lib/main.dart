@@ -5,9 +5,16 @@ import 'package:contacts/widgets/contscts_list.dart';
 import 'package:contacts/widgets/drawer_widget.dart';
 import 'package:contacts/widgets/no_contacts_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: kPrimaryColor,
+    ),
+  );
   runApp(const MyContactApp());
 }
 
