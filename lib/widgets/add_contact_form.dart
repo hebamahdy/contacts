@@ -57,7 +57,7 @@ class _AddContactFormState extends State<AddContactForm> {
             hint: 'Mobile',
           ),
           const SizedBox(
-            height: 32,
+            height: 16,
           ),
           CustomTextField(
             onSaved: (value) {

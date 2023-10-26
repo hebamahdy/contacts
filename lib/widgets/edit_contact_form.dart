@@ -69,7 +69,7 @@ class _EditContactFormState extends State<EditContactForm> {
             initialValue: contact.mobile,
           ),
           const SizedBox(
-            height: 32,
+            height: 16,
           ),
           CustomTextField(
             onSaved: (value) {
