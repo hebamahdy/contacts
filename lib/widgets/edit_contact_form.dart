@@ -67,6 +67,7 @@ class _EditContactFormState extends State<EditContactForm> {
             },
             hint: 'Mobile',
             initialValue: contact.mobile,
+            isNumberOnly: true,
           ),
           const SizedBox(
             height: 16,

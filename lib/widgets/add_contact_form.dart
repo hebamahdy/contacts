@@ -29,7 +29,7 @@ class _AddContactFormState extends State<AddContactForm> {
       child: Column(
         children: [
           const SizedBox(
-            height: 32,
+            height: 20,
           ),
           CustomTextField(
             onSaved: (value) {
@@ -55,6 +55,7 @@ class _AddContactFormState extends State<AddContactForm> {
               mobile = value;
             },
             hint: 'Mobile',
+            isNumberOnly: true,
           ),
           const SizedBox(
             height: 16,

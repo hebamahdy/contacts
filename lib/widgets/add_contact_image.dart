@@ -14,27 +14,24 @@ class AddContactImage extends StatefulWidget {
 }
 
 class _AddContactImageState extends State<AddContactImage> {
-
   File? file;
 
-  getImage() async
-  {
+  getImage(String source) async {
     //var appState = context.watch<MyAppState>();
 
-    var appState=Provider.of<MyAppState>(context,listen: false);
+    var appState = Provider.of<MyAppState>(context, listen: false);
 
     final ImagePicker picker = ImagePicker();
 
-    final XFile? imageCamera=await picker.pickImage(source: ImageSource.gallery);
-   // final XFile? photo=await picker.pickImage(source: ImageSource.camera);
-    if(imageCamera!=null)
-      {
-        setState(() {
-          file=File(imageCamera.path);
-          appState.setImage(imageCamera.path);
-        });
-
-      }
+    final XFile? imageCamera = await picker.pickImage(
+        source: source == "gallery" ? ImageSource.gallery : ImageSource.camera);
+    // final XFile? photo=await picker.pickImage(source: ImageSource.camera);
+    if (imageCamera != null) {
+      setState(() {
+        file = File(imageCamera.path);
+        appState.setImage(imageCamera.path);
+      });
+    }
 
     /*try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -44,50 +41,73 @@ class _AddContactImageState extends State<AddContactImage> {
     } on PlatformException catch(e) {
       print('Failed to pick image: $e');
     }*/
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-
-       await getImage();
-
+        await getImage('gallery');
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          file==null?
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-                color:kPrimaryColor,
-                borderRadius:BorderRadius.circular(50)
-
-            ),
-            child: const Center(child: Icon(
-              Icons.camera_alt_outlined,
-                  color: Colors.white,
-              size: 30,
-            ),),
-          ):
-
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(60),
-                child: Image.file(file!,fit: BoxFit.cover,),
-              ),
-            ),
-         const SizedBox(height: 10,),
-         file==null?const Text("Add Contact Image",style: TextStyle(color: kPrimaryColor),):const Text("Edit Contact Image",style: TextStyle(color: kPrimaryColor),)
+          file == null
+              ? Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: kPrimaryColor,
+                      borderRadius: BorderRadius.circular(50)),
+                  child: const Center(
+                    child: Icon(
+                      Icons.camera_alt_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                )
+              : SizedBox(
+                  width: 100,
+                  height: 100,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: Image.file(
+                      file!,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+          Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          await getImage('gallery');
+                        },
+                        child: const Text(
+                          "Gallery Image",
+                          style: TextStyle(color: kPrimaryColor),
+                        )),
+                    TextButton(
+                      onPressed: () async {
+                        await getImage('camera');
+                      },
+                      child: const Text("Camera Image",
+                          style: TextStyle(color: kPrimaryColor)),
+                    ),
+                    if(file!=null)
+                    TextButton(
+                        onPressed: () {
+                          setState(() {
+                            file = null;
+                          });
+                        },
+                        child: const Text("Delete"))
+                  ],
+                )
         ],
       ),
-    )
-    ;
+    );
   }
 }
