@@ -39,7 +39,7 @@ class _EditContactFormState extends State<EditContactForm> {
         children: [
           ShowContactImage(index: widget.index),
           const SizedBox(
-            height: 32,
+            height: 20,
           ),
           CustomTextField(
             onSaved: (value) {
@@ -118,7 +118,7 @@ class ShowContactImage extends StatefulWidget {
 
 class _ShowContactImageState extends State<ShowContactImage> {
   File? file;
-  getImage() async {
+  getImage(String source) async {
     var appState = Provider.of<MyAppState>(context, listen: false);
 
     //var appState = context.watch<MyAppState>();
@@ -126,14 +126,12 @@ class _ShowContactImageState extends State<ShowContactImage> {
     final ImagePicker picker = ImagePicker();
 
     final XFile? imageCamera =
-        await picker.pickImage(source: ImageSource.gallery);
+        await picker.pickImage(source: source=="gallery"?ImageSource.gallery:ImageSource.camera);
     // final XFile? photo=await picker.pickImage(source: ImageSource.camera);
     if (imageCamera != null) {
       setState(() {
         file = File(imageCamera.path);
         appState.contacts[widget.index].image = imageCamera.path;
-        print(
-            "uploaded image ${appState.contacts[widget.index].image}");
       });
     }
   }
@@ -144,7 +142,7 @@ class _ShowContactImageState extends State<ShowContactImage> {
     var appState = Provider.of<MyAppState>(context, listen: false);
 
     Contact contact = appState.contacts[widget.index];
-    print(
+    debugPrint(
         "uploaded1 image ${appState.contacts[widget.index].image}");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,7 +160,7 @@ class _ShowContactImageState extends State<ShowContactImage> {
                 ))
             : GestureDetector(
           onTap: () async{
-            await getImage();
+            await getImage("gallery");
           },
               child: Container(
                   width: 100,
@@ -179,14 +177,34 @@ class _ShowContactImageState extends State<ShowContactImage> {
                   ),
                 ),
             ),
-        TextButton(
-            onPressed: () async {
-              await getImage();
-            },
-            child: const Text(
-              "Edit Contact Image",
-              style: TextStyle(color: kPrimaryColor),
-            ))
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: () async {
+                  await getImage('gallery');
+                },
+                child: const Text(
+                  "Gallery Image",
+                  style: TextStyle(color: kPrimaryColor),
+                )),
+            TextButton(
+              onPressed: () async {
+                await getImage('camera');
+              },
+              child: const Text("Camera Image",
+                  style: TextStyle(color: kPrimaryColor)),
+            ),
+             if(contact.image!="")
+              TextButton(
+                  onPressed: () {
+                    setState(() {
+                      contact.image="";
+                    });
+                  },
+                  child: const Text("Delete",style: TextStyle(color: kPrimaryColor)))
+          ],
+        )
       ],
     );
   }

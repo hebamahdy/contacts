@@ -79,33 +79,33 @@ class _AddContactImageState extends State<AddContactImage> {
                   ),
                 ),
           Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () async {
-                          await getImage('gallery');
-                        },
-                        child: const Text(
-                          "Gallery Image",
-                          style: TextStyle(color: kPrimaryColor),
-                        )),
-                    TextButton(
-                      onPressed: () async {
-                        await getImage('camera');
-                      },
-                      child: const Text("Camera Image",
-                          style: TextStyle(color: kPrimaryColor)),
-                    ),
-                    if(file!=null)
-                    TextButton(
-                        onPressed: () {
-                          setState(() {
-                            file = null;
-                          });
-                        },
-                        child: const Text("Delete"))
-                  ],
-                )
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                  onPressed: () async {
+                    await getImage('gallery');
+                  },
+                  child: const Text(
+                    "Gallery Image",
+                    style: TextStyle(color: kPrimaryColor),
+                  )),
+              TextButton(
+                onPressed: () async {
+                  await getImage('camera');
+                },
+                child: const Text("Camera Image",
+                    style: TextStyle(color: kPrimaryColor)),
+              ),
+              if (file != null)
+                TextButton(
+                    onPressed: () {
+                      setState(() {
+                        file = null;
+                      });
+                    },
+                    child: const Text("Delete",style: TextStyle(color: kPrimaryColor)))
+            ],
+          )
         ],
       ),
     );
