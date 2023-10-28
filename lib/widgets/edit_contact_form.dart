@@ -4,6 +4,7 @@ import 'package:contacts/MyAppState.dart';
 import 'package:contacts/constants.dart';
 import 'package:contacts/contact.dart';
 import 'package:contacts/widgets/custom_button.dart';
+import 'package:contacts/widgets/custom_email_text_fileld.dart';
 import 'package:contacts/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -72,7 +73,7 @@ class _EditContactFormState extends State<EditContactForm> {
           const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          CustomEmailTextField(
             onSaved: (value) {
               email = value;
             },

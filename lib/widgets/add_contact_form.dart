@@ -1,6 +1,7 @@
 import 'package:contacts/MyAppState.dart';
 import 'package:contacts/contact.dart';
 import 'package:contacts/widgets/custom_button.dart';
+import 'package:contacts/widgets/custom_email_text_fileld.dart';
 import 'package:contacts/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +61,7 @@ class _AddContactFormState extends State<AddContactForm> {
           const SizedBox(
             height: 16,
           ),
-          CustomTextField(
+          CustomEmailTextField(
             onSaved: (value) {
               email = value;
             },
